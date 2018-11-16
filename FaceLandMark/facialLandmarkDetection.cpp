@@ -28,14 +28,19 @@ int main(int argc,char** argv)
     // Read a frame
     while(cam.read(frame))
     {
-      
       // Find face
       vector<Rect> faces;
       // Convert frame to grayscale because
       // faceDetector requires grayscale image.
       cvtColor(frame, gray, COLOR_BGR2GRAY);
 
-      // Detect faces
+	  // Simple conversions to check some stuff 
+	  uchar* new_array =  new uchar(gray.rows*gray.cols);
+	  new_array = gray.data;
+	  Mat M(gray.rows, gray.cols, CV_8U, new_array);
+	  imshow("Simple gray image", M);
+      
+	  // Detect faces
       faceDetector.detectMultiScale(gray, faces);
       
       // Variable for landmarks. 
