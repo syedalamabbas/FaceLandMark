@@ -40,6 +40,20 @@ int main(int argc,char** argv)
 	  Mat M(gray.rows, gray.cols, CV_8U, new_array);
 	  imshow("Simple gray image", M);
       
+	  // Color conversion setting 
+
+	  Mat colorFrame(gray.rows, gray.cols, CV_8UC4, cv::Scalar(0, 0, 0, 1));
+
+	  for (int i = 0; i < frame.rows*frame.cols; i++)
+	  {
+		  colorFrame.data[i*4 + 0] = frame.data[i * 3 + 0];
+		  colorFrame.data[i * 4 + 1] = frame.data[i * 3 + 1];
+		  colorFrame.data[i * 4 + 2] = frame.data[i * 3 + 2];
+	  
+	  }
+
+	  imshow("Full color image BGRA", colorFrame);
+
 	  // Detect faces
       faceDetector.detectMultiScale(gray, faces);
       
