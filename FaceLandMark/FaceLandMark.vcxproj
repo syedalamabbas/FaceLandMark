@@ -157,6 +157,11 @@
       <AdditionalLibraryDirectories>$(SolutionDir)PrebuildOpenCV40\x64\vc15\lib;</AdditionalLibraryDirectories>
       <AdditionalDependencies>opencv_world400.lib;%(AdditionalDependencies)</AdditionalDependencies>
     </Link>
+    <PostBuildEvent>
+      <Command>xcopy /y /d  "$(SolutionDir)PrebuildOpenCV40\x64\vc15\bin\opencv_world400.dll"  "$(SolutionDir)$(Platform)\$(Configuration)\"
+xcopy /y /d  "$(SolutionDir)PrebuildOpenCV40\x64\vc15\bin\opencv_img_hash400.dll"  "$(SolutionDir)$(Platform)\$(Configuration)\"
+xcopy /y /d  "$(SolutionDir)PrebuildOpenCV40\x64\vc15\bin\opencv_ffmpeg400_64.dll"  "$(SolutionDir)$(Platform)\$(Configuration)\"</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="facialLandmarkDetection.cpp" />
